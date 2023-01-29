@@ -1,0 +1,7 @@
+name = Webform Toggle Status
+description = "Adds a menu path and Views handler that lets you toggle the Open/Closed status of a Webform."
+backdrop = 1.x
+type = module
+package = Webform
+
+dependencies[] = webform

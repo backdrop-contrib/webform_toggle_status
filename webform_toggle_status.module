@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Main file for module that provides an open/close status toggle for webforms.
+ */
+
+/**
+ * Implements hook_menu().
+  */
+function webform_toggle_status_menu() {
+  $items = array();
+  $items['node/%webform_menu/webform/toggle-status'] = array(
+    'title' => 'Toggle status',
+    'page callback' => 'webform_toggle_status_toggle_status',
+    'page arguments' => array(1),
+    'access callback' => 'webform_node_update_access',
+    'access arguments' => array(1),
+    'file' => 'webform_toggle_status.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function webform_toggle_status_views_api() {
+  return array(
+    'api' => 3.0,
+    'path' => backdrop_get_path('module', 'webform_toggle_status') . '/views',
+  );
+}
+
+/**
+ * Implements hook_autoload_info()
+ */
+function webform_toggle_status_autoload_info() {
+  return array(
+    'webform_toggle_status_handler_field_node_link' => 'views/webform_toggle_status_handler_field_node_link.inc',
+  );
+}
